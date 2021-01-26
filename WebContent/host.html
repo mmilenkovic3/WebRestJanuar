@@ -2,9 +2,68 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<script src="jquery-3.3.1.min.js"> </script>
 <title>Insert title here</title>
 </head>
 <body>
 <h1> host </h1>
+<button onclick="LogOut(); return false;">Log out </button>
 </body>
 </html>
+
+
+
+<script>
+
+function LogOut()
+{
+	
+	var u = getLoggedUser();
+	//console.log(u.lastname);
+	
+	$.ajax({
+		
+		type : 'GET',
+		url : "rest/users/logout",
+		dataType : 'json',
+		success : function(data) {
+			console.log("USAO JE UT?")
+			$(location).attr('href', 'http://localhost:8080/PocetniREST/index.html');
+			console.log(data.response);
+			
+			
+		},
+		error : function(message) {
+			alert(message.responseText);
+			$(location).attr('href', 'http://localhost:8080/PocetniREST/index.html');
+			
+			
+		}
+	})
+}
+
+
+
+function getLoggedUser() {
+
+	var user = null;
+
+	$.ajax({
+		
+		url : "rest/users/getLoggedUser",
+		type : 'GET',
+		dataType : 'json',
+		success : function(data) {
+			if (data) {
+				console.log(data);
+				user = data;
+			}
+		},
+		error : function(errorThrown) {
+			toastr.error(errorThrown.responseText);
+		}
+	});
+	return user;
+}
+
+</script>

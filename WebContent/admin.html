@@ -18,7 +18,27 @@ function LogOut()
 {
 	
 	var u = getLoggedUser();
-	console.log(u.lastname);
+	//console.log(u.lastname);
+	
+	$.ajax({
+		
+		type : 'GET',
+		url : "rest/users/logout",
+		dataType : 'json',
+		success : function(data) {
+			console.log("USAO JE UT?")
+			$(location).attr('href', 'http://localhost:8080/PocetniREST/index.html');
+			console.log(data.response);
+			
+			
+		},
+		error : function(message) {
+			alert(message.responseText);
+			$(location).attr('href', 'http://localhost:8080/PocetniREST/index.html');
+			
+			
+		}
+	})
 }
 
 
@@ -28,7 +48,7 @@ function getLoggedUser() {
 	var user = null;
 
 	$.ajax({
-		async : false,
+		
 		url : "rest/users/getLoggedUser",
 		type : 'GET',
 		dataType : 'json',

@@ -83,7 +83,8 @@ public class UserService {
 	
 	@GET
 	@Path("/logout")
-	public Response LogOut() {		
+	public Response LogOut() {	
+		System.out.println("USAO U LOG OUT?");
 		request.getSession().removeAttribute("loggedUser");
 		return Response.status(200).entity("Successeffully logged out!").build();
 	}
