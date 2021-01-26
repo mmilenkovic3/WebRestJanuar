@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Apartment</title>
+</head>
+<body>
+<form>
+	<table>
+		
+		<tr><th align="center">Add new apartment</th></tr>
+				<tr>
+				<td>Enter apartment name:</td>
+					<td><input type="text" id="name"
+						autocomplete="off"></td>
+				</tr>
+				<tr>
+				<td>Enter number of rooms:</td>
+					<td><input type="number" id="numberOfRooms"
+						autocomplete="off"></td>
+				</tr>
+				<tr>
+				<td>Enter number of guests:</td>
+					<td><input type="number" id="numberOfGuests"
+						autocomplete="off"></td>
+				</tr>
+				<tr>
+				<td><label class = "valid" id = "lblName"></label></td>
+				</tr>
+				<tr>
+				<td>Enter cost per night:</td>
+					<td><input type="number" id="cost"
+						autocomplete="off"></td>
+				</tr>
+				<tr>
+				<td><label class = "valid" id = "lblSurname"></label></td>
+				</tr>
+				<tr>
+					<td>Enter apartment type:</td>
+					<td align="center" style="padding: 10px 10px 3px"><input type="radio" id="room" name="type"
+						value="ROOM"> <label for="ROOM"
+						style="font-size: 18px; color: gray">Room</label> <input
+						type="radio" id="entire_place" name="type" value="ENTIRE_PLACE"> <label
+						for="ENTIRE_PLACE" style="font-size: 18px; color: gray">Entire place</label></td>
+				</tr>
+				<tr>
+					<td>Enter apartment status:</td>
+					<td align="center" style="padding: 10px 10px 3px"><input type="radio" id="active" name="status"
+						value="ACTIVE"> <label for="ACTIVE"
+						style="font-size: 18px; color: gray">Active</label> <input
+						type="radio" id="not_active" name="type" value="NOT_ACTIVE"> <label
+						for="NOT_ACTIVE" style="font-size: 18px; color: gray">Not active</label></td>
+				</tr>
+				<tr>
+				<td>Select amenities your apartment has:</td>
+				<td><input type = "checkbox"></td>
+				</tr>
+				<tr>
+					<td align="center"><input type="button" id="registerButton"
+						value="Sign up"></td>
+				</tr>
+		
+	</table>
+</form>
+</body>
+</html>

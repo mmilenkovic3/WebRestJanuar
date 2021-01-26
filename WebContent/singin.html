@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="jquery-3.3.1.min.js"> </script>
+<title>Sign in</title>
+</head>
+<body>
+<form>
+<table>
+	<tr>
+		<td> Username: </td>
+		<td> <input type="text" id="username"  style="border-color:red"  /> </td>
+	</tr>
+	
+	<tr>
+		<td> Password: </td>
+		<td> <input type="password" id="password"  style="border-color:red"  /> </td>
+	</tr>
+	
+	<tr>
+	<td colspan="2">
+	<input type="submit" value="Sing in" onclick="SignIn();return false;"/>
+	</td>
+	</tr>
+	</table>
+
+</form>
+
+</body>
+</html>
+
+<script>
+var username;
+var password;
+
+function SignIn() {
+	username = document.getElementById("username").value;
+	password = document.getElementById("password").value;
+	
+	console.log(username + " " + password )
+	$.ajax({
+		type : "POST",
+		url : "rest/users/login",
+		data : JSON.stringify({
+			username : username,
+			password : password
+		}),
+		contentType : "application/json",
+		dataType : 'json',
+		success : function(data) {	
+			console.log("USPESNO?");
+				//console.log(data.role);
+				if(data.role == "ADMIN"){
+					$(location).attr('href', 'http://localhost:8080/PocetniREST/admin.html');
+
+				}else if(data.role == "HOST"){
+					$(location).attr('href', 'http://localhost:8080/PocetniREST/host.html');
+
+				}else if(data.role == "GUEST"){
+					$(location).attr('href', 'http://localhost:8080/PocetniREST/guest.html');
+
+					}else {
+					console.log("invalid username.");
+					}},
+		error : function(message) {
+			alert("Invalid username od password!");
+			$('#error').text(message);
+			$('#error').show().delay(3000).hide();
+		}
+	})
+	
+	
+}
+
+
+</script>

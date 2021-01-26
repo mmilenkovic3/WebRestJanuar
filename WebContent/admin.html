@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome</title>
+
+<script src="jquery-3.3.1.min.js"> </script>
+</head>
+<body>
+<h1> admin </h1>
+<button onclick="LogOut(); return false;">Log out </button>
+</body>
+</html>
+
+<script>
+
+function LogOut()
+{
+	
+	var u = getLoggedUser();
+	console.log(u.lastname);
+}
+
+
+
+function getLoggedUser() {
+
+	var user = null;
+
+	$.ajax({
+		async : false,
+		url : "rest/users/getLoggedUser",
+		type : 'GET',
+		dataType : 'json',
+		success : function(data) {
+			if (data) {
+				console.log(data);
+				user = data;
+			}
+		},
+		error : function(errorThrown) {
+			toastr.error(errorThrown.responseText);
+		}
+	});
+	return user;
+}
+
+</script>
